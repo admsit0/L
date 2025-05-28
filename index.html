@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ya casi vuelvo a ti...</title>
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🧡</text></svg>'>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Corazones flotantes de fondo */
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 20px;
+      animation: float 8s infinite linear;
+    }
+
+    .heart:nth-child(odd) {
+      color: rgba(255, 182, 193, 0.4);
+      font-size: 16px;
+    }
+
+    .heart:nth-child(3n) {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 24px;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-20px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      animation: pulse 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      color: #fff;
+      font-weight: 300;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      opacity: 0.9;
+    }
+
+    .main-countdown {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      margin-bottom: 50px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .countdown-display {
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: #e91e63;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .countdown-label {
+      font-size: 1rem;
+      color: #666;
+      font-weight: 300;
+    }
+
+    /* Cuadrícula de días */
+    .days-grid-container {
+      margin: 50px 0;
+    }
+
+    .days-grid-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      color: #fff;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .days-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      gap: 15px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    .day-box {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .day-box.passed {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+      color: white;
+      transform: scale(0.9);
+    }
+
+    .day-box.passed::after {
+      content: '✗';
+      position: absolute;
+      font-size: 1.8rem;
+      color: white;
+      font-weight: bold;
+    }
+
+    .day-box.current {
+      background: linear-gradient(135deg, #ffd93d, #ff9a56);
+      color: white;
+      animation: glow 1.5s ease-in-out infinite alternate;
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 217, 61, 0.6);
+    }
+
+    .day-box.future {
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
+      color: #666;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .day-box.future:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 20px rgba(255, 217, 61, 0.6); }
+      to { box-shadow: 0 0 30px rgba(255, 217, 61, 0.9); }
+    }
+
+    /* Mensajes románticos */
+    .love-messages {
+      margin: 50px 0;
+    }
+
+    .message-card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 25px;
+      border-radius: 20px;
+      margin: 20px 0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      font-style: italic;
+      color: #666;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      border-left: 4px solid #e91e63;
+    }
+
+    .message-card::before {
+      content: '"';
+      font-size: 3rem;
+      color: #e91e63;
+      position: relative;
+      top: 10px;
+      left: -5px;
+    }
+
+    .message-card::after {
+      content: '"';
+      font-size: 3rem;
+      color: #e91e63;
+      position: relative;
+      top: 10px;
+      right: -5px;
+    }
+
+    /* Botón especial */
+    .special-button {
+      background: linear-gradient(135deg, #e91e63, #ad1457);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 30px 0;
+      box-shadow: 0 10px 25px rgba(233, 30, 99, 0.3);
+    }
+
+    .special-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(233, 30, 99, 0.4);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+      
+      .countdown-display {
+        font-size: 2rem;
+      }
+      
+      .days-grid {
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+        gap: 10px;
+        padding: 20px;
+      }
+      
+      .day-box {
+        width: 50px;
+        height: 50px;
+        font-size: 0.9rem;
+      }
+      
+      .days-grid-title {
+        font-size: 2rem;
+      }
+      
+      .container {
+        padding: 20px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .days-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+      
+      .message-card {
+        padding: 20px;
+        margin: 15px 0;
+      }
+    }
+
+    /* Footer romántico */
+    .footer {
+      margin-top: 60px;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    }
+
+    .footer .heart-emoji {
+      color: #ff6b9d;
+      font-size: 1.3rem;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+
+
+    /* Botón de WhatsApp */
+    .whatsapp-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+      z-index: 1000;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .whatsapp-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+      background: linear-gradient(135deg, #128c7e, #075e54);
+    }
+  </style>
+</head>
+<body>
+  <!-- Corazones flotantes -->
+  <div class="floating-hearts" id="hearts"></div>
+
+  <div class="container">
+    <h1>Cuenta atrás</h1>
+    <p class="subtitle">para volver a verte y abrazarte fuerte</p>
+
+    <!-- Contador principal -->
+    <div class="main-countdown">
+      <div class="countdown-display" id="timer">Cargando...</div>
+      <div class="countdown-label">hasta volver a darte un besikiki</div>
+    </div>
+
+    <!-- Cuadrícula de días -->
+    <div class="days-grid-container">
+      <h2 class="days-grid-title">Cada día que pasa es un día menos</h2>
+      <div class="days-grid" id="daysGrid"></div>
+    </div>
+
+    <!-- Mensajes románticos -->
+    <div class="love-messages">
+      <div class="message-card" id="dailyMessage">
+        L 💕
+      </div>
+    </div>
+
+    <!-- Botón especial -->
+    <button class="special-button" onclick="showLoveMessage()">
+      💕 Pulsa para recibir un mensaje 💕
+    </button>
+
+    <div class="footer">
+      <p>Sigue brillando hasta que llegue. Te pienso cada minuto <span class="heart-emoji">💖</span></p>
+      <p style="margin-top: 10px; font-size: 0.9rem; font-weight: 600; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+        Con todo mi amor, desde Italia 🇮🇹
+      </p>
+    </div>
+  </div>
+
+  <!-- Botón de WhatsApp -->
+  <a href="https://wa.me/+34638707783?text=Hola%20guapo%20hablas%20?" class="whatsapp-button" target="_blank">
+    Me echas de menos? Pulsa 💕
+  </a>
+
+  <script>
+    const targetDate = new Date('2025-06-17T22:10:00');
+    const startDate = new Date('2025-05-30T20:00:00');
+    
+    const loveMessages = [
+      "italia 2026 is gonna go craaaazy :)",
+      "bella kiii taaaa 💕",
+      "ahí estas derrapando eh peque",
+      "y debería ser un de liii tooo, yo dejarte de mirar 🌹",
+      "tq",
+      "te echo de menos 🏠💕",
+      "el 17 empieza el verdadero ferikiki",
+      "sí, estoy mirando la nota de la agenda ahora mismo"
+    ];
+
+    function createFloatingHearts() {
+      const heartsContainer = document.getElementById('hearts');
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        
+        // Variedad de corazones
+        const heartTypes = ['♥', '💕', '💖', '💗', '🤍', '💙', '💜'];
+        heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+        
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+        heartsContainer.appendChild(heart);
+        
+        setTimeout(() => {
+          heart.remove();
+        }, 8000);
+      }, 500);
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('timer').innerHTML = '¡Ya estoy contigo! 💕';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('timer').innerHTML = 
+        `<strong>${days}</strong> días <strong>${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}</strong>`;
+    }
+
+    function createDaysGrid() {
+      const grid = document.getElementById('daysGrid');
+      const now = new Date();
+      const totalDays = Math.ceil((targetDate - startDate) / (1000 * 60 * 60 * 24));
+      
+      for (let i = 0; i < totalDays; i++) {
+        const dayDate = new Date(startDate);
+        dayDate.setDate(startDate.getDate() + i);
+        
+        const dayBox = document.createElement('div');
+        dayBox.className = 'day-box';
+        dayBox.textContent = i + 1;
+        
+        if (dayDate < now) {
+          dayBox.classList.add('passed');
+        } else if (dayDate.toDateString() === now.toDateString()) {
+          dayBox.classList.add('current');
+        } else {
+          dayBox.classList.add('future');
+        }
+        
+        grid.appendChild(dayBox);
+      }
+    }
+
+    function showLoveMessage() {
+      const messageElement = document.getElementById('dailyMessage');
+      const randomMessage = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+      
+      messageElement.style.opacity = '0';
+      setTimeout(() => {
+        messageElement.textContent = randomMessage;
+        messageElement.style.opacity = '1';
+      }, 300);
+    }
+
+    function updateDailyMessage() {
+      const now = new Date();
+      const dayOfSeparation = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+      const messageIndex = dayOfSeparation % loveMessages.length;
+      document.getElementById('dailyMessage').textContent = loveMessages[messageIndex];
+    }
+
+    // Inicializar todo
+    createFloatingHearts();
+    createDaysGrid();
+    updateDailyMessage();
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+    
+    // Actualizar la cuadrícula cada hora
+    setInterval(createDaysGrid, 3600000);
+  </script>
+</body>
+</html>
