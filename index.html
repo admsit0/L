@@ -271,8 +271,8 @@
       
       .days-grid {
         grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-        gap: 10px;
-        padding: 20px;
+        gap: 8px;
+        padding: 15px;
       }
       
       .day-box {
@@ -286,24 +286,37 @@
       }
       
       .container {
-        padding: 20px 0;
+        padding: 20px 0 120px 0;
       }
     }
 
     @media (max-width: 480px) {
       .days-grid {
         grid-template-columns: repeat(6, 1fr);
+        gap: 5px;
+        padding: 10px;
+      }
+      
+      .day-box {
+        width: 45px;
+        height: 45px;
+        font-size: 0.8rem;
       }
       
       .message-card {
         padding: 20px;
         margin: 15px 0;
       }
+      
+      .container {
+        padding: 20px 0 140px 0;
+      }
     }
 
     /* Footer romántico */
     .footer {
       margin-top: 60px;
+      margin-bottom: 20px;
       color: #fff;
       font-size: 1.1rem;
       font-weight: 600;
