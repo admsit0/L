@@ -24,6 +24,39 @@
       position: relative;
     }
 
+    /* Animación de entrada floreal */
+    .floral-explosion {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .flower {
+      position: absolute;
+      font-size: 30px;
+      animation: floralExplosion 3s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes floralExplosion {
+      0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.2) rotate(180deg);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.8) rotate(360deg) translateY(-200px);
+        opacity: 0;
+      }
+    }
+
     /* Corazones flotantes de fondo */
     .floating-hearts {
       position: fixed;
@@ -75,6 +108,19 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 40px 0;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 2s forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h1 {
@@ -202,6 +248,176 @@
       to { box-shadow: 0 0 30px rgba(255, 217, 61, 0.9); }
     }
 
+    /* Modal personalizado para alertas bonitas */
+    .custom-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .custom-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #ff9a9e, #fecfef);
+      padding: 30px;
+      border-radius: 25px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+    }
+
+    .custom-modal.show .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      color: #fff;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .modal-message {
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .modal-close {
+      background: rgba(255, 255, 255, 0.9);
+      color: #e91e63;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Modal de imagen */
+    .image-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .image-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .image-modal-content {
+      position: relative;
+      max-width: 70%;
+      max-height: 70%;
+      border-radius: 10px;
+      overflow: visible;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+    }
+
+    .image-modal.show .image-modal-content {
+      transform: scale(1);
+    }
+
+    .image-modal img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 20px;
+    }
+
+    .image-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .image-close:hover {
+      background: white;
+      transform: scale(1.1);
+    }
+
+    /* Animación especial para día actual */
+    .current-day-sparkle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .sparkle {
+      position: absolute;
+      color: #ffd93d;
+      font-size: 12px;
+      animation: sparkle 1.5s ease-out infinite;
+    }
+
+    @keyframes sparkle {
+      0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1) rotate(180deg);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
     /* Mensajes románticos */
     .love-messages {
       margin: 50px 0;
@@ -288,6 +504,19 @@
       .container {
         padding: 20px 0 120px 0;
       }
+
+      .modal-content {
+        padding: 25px;
+        width: 95%;
+      }
+
+      .modal-title {
+        font-size: 2rem;
+      }
+
+      .modal-message {
+        font-size: 1.1rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -311,6 +540,14 @@
       .container {
         padding: 20px 0 140px 0;
       }
+
+      .modal-title {
+        font-size: 1.8rem;
+      }
+
+      .modal-message {
+        font-size: 1rem;
+      }
     }
 
     /* Footer romántico */
@@ -329,7 +566,11 @@
       animation: heartbeat 1.5s ease-in-out infinite;
     }
 
-
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
 
     /* Botón de WhatsApp */
     .whatsapp-button {
@@ -361,6 +602,9 @@
   </style>
 </head>
 <body>
+  <!-- Animación de entrada floreal -->
+  <div class="floral-explosion" id="floralExplosion"></div>
+
   <!-- Corazones flotantes -->
   <div class="floating-hearts" id="hearts"></div>
 
@@ -400,14 +644,31 @@
     </div>
   </div>
 
+  <!-- Modal personalizado -->
+  <div class="custom-modal" id="customModal">
+    <div class="modal-content">
+      <div class="modal-title" id="modalTitle">¡Ey!</div>
+      <div class="modal-message" id="modalMessage">Todavía no puedes abrirlo impacientona 💕</div>
+      <button class="modal-close" onclick="closeModal()">Vale, vale 😊</button>
+    </div>
+  </div>
+
+  <!-- Modal de imagen -->
+  <div class="image-modal" id="imageModal">
+    <div class="image-modal-content">
+      <img id="modalImage" src="" alt="Foto del día">
+      <button class="image-close" onclick="closeImageModal()">×</button>
+    </div>
+  </div>
+
   <!-- Botón de WhatsApp -->
   <a href="https://wa.me/+34638707783?text=Hola%20guapo%20hablas%20?" class="whatsapp-button" target="_blank">
     Me echas de menos? Pulsa 💕
   </a>
 
   <script>
-    const targetDate = new Date('2025-06-17T22:10:00');
-    const startDate = new Date('2025-05-30T20:00:00');
+    const targetDate = new Date('2025-05-31T22:10:00');
+    const startDate = new Date('2025-05-15T20:00:00');
     
     const loveMessages = [
       "italia 2026 is gonna go craaaazy :)",
@@ -419,6 +680,33 @@
       "el 17 empieza el verdadero ferikiki",
       "sí, estoy mirando la nota de la agenda ahora mismo"
     ];
+
+    // Animación floreal de entrada
+    function createFloralExplosion() {
+      const container = document.getElementById('floralExplosion');
+      const flowers = ['🌸', '🌺', '🌷', '🌹', '💐', '🌻', '🌼', '🌟', '✨', '💫'];
+      
+      for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+          const flower = document.createElement('div');
+          flower.className = 'flower';
+          flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+          flower.style.left = Math.random() * 100 + '%';
+          flower.style.top = Math.random() * 100 + '%';
+          flower.style.animationDelay = Math.random() * 0.5 + 's';
+          container.appendChild(flower);
+          
+          setTimeout(() => {
+            flower.remove();
+          }, 3000);
+        }, i * 100);
+      }
+      
+      // Remover el contenedor después de la animación
+      setTimeout(() => {
+        container.style.display = 'none';
+      }, 4000);
+    }
 
     function createFloatingHearts() {
       const heartsContainer = document.getElementById('hearts');
@@ -458,8 +746,36 @@
         `<strong>${days}</strong> días <strong>${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}</strong>`;
     }
 
+    function createSparkles(element) {
+      const sparkleContainer = document.createElement('div');
+      sparkleContainer.className = 'current-day-sparkle';
+      element.appendChild(sparkleContainer);
+      
+      setInterval(() => {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.innerHTML = '✨';
+        
+        const angle = Math.random() * 360;
+        const distance = 30 + Math.random() * 20;
+        const x = Math.cos(angle * Math.PI / 180) * distance;
+        const y = Math.sin(angle * Math.PI / 180) * distance;
+        
+        sparkle.style.left = x + 'px';
+        sparkle.style.top = y + 'px';
+        sparkle.style.animationDelay = Math.random() * 0.5 + 's';
+        
+        sparkleContainer.appendChild(sparkle);
+        
+        setTimeout(() => {
+          sparkle.remove();
+        }, 1500);
+      }, 200);
+    }
+
     function createDaysGrid() {
       const grid = document.getElementById('daysGrid');
+      grid.innerHTML = ''; // Limpiar la cuadrícula
       const now = new Date();
       const totalDays = Math.ceil((targetDate - startDate) / (1000 * 60 * 60 * 24));
       
@@ -470,17 +786,99 @@
         const dayBox = document.createElement('div');
         dayBox.className = 'day-box';
         dayBox.textContent = i + 1;
+        dayBox.setAttribute('data-day', i + 1);
         
         if (dayDate < now) {
           dayBox.classList.add('passed');
+          dayBox.addEventListener('click', () => openImage(i + 1));
         } else if (dayDate.toDateString() === now.toDateString()) {
           dayBox.classList.add('current');
+          dayBox.addEventListener('click', () => openImageWithAnimation(i + 1));
+          createSparkles(dayBox);
         } else {
           dayBox.classList.add('future');
+          dayBox.addEventListener('click', () => showFutureMessage());
         }
         
         grid.appendChild(dayBox);
       }
+    }
+
+    function openImage(day) {
+      const modal = document.getElementById('imageModal');
+      const img = document.getElementById('modalImage');
+      img.src = `images/im${day}.jpg`;
+      img.onerror = () => {
+        img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmY5YTllIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZvdG8gZGVsIGTDrWEgJyArIGRheSArICc8L3RleHQ+PC9zdmc+';
+      };
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function openImageWithAnimation(day) {
+      // Crear efecto de brillo especial para el día actual
+      const dayBox = document.querySelector(`[data-day="${day}"]`);
+      dayBox.style.animation = 'glow 0.3s ease-in-out 5 alternate';
+      
+      // Crear explosión de corazones desde el día actual
+      const rect = dayBox.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElement('div');
+        heart.innerHTML = '💖';
+        heart.style.position = 'fixed';
+        heart.style.left = centerX + 'px';
+        heart.style.top = centerY + 'px';
+        heart.style.fontSize = '20px';
+        heart.style.pointerEvents = 'none';
+        heart.style.zIndex = '9999';
+        
+        const angle = (i * 30) * Math.PI / 180;
+        const distance = 80 + Math.random() * 40;
+        const endX = centerX + Math.cos(angle) * distance;
+        const endY = centerY + Math.sin(angle) * distance;
+        
+        heart.animate([
+          { transform: 'translate(0, 0) scale(0)', opacity: 1 },
+          { transform: `translate(${endX - centerX}px, ${endY - centerY}px) scale(1)`, opacity: 1, offset: 0.7 },
+          { transform: `translate(${endX - centerX}px, ${endY - centerY - 50}px) scale(0)`, opacity: 0 }
+        ], {
+          duration: 1500,
+          easing: 'ease-out'
+        });
+        
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1500);
+      }
+      
+      setTimeout(() => {
+        openImage(day);
+      }, 800);
+    }
+
+    function closeImageModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    }
+
+    function showFutureMessage() {
+      const modal = document.getElementById('customModal');
+      const title = document.getElementById('modalTitle');
+      const message = document.getElementById('modalMessage');
+      
+      title.textContent = '¡Ey! 💕';
+      message.textContent = 'Todavía no puedes abrirlo impacientona';
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('customModal');
+      modal.classList.remove('show');
+      document.body.style.overflow = 'auto';
     }
 
     function showLoveMessage() {
@@ -501,11 +899,49 @@
       document.getElementById('dailyMessage').textContent = loveMessages[messageIndex];
     }
 
+    // Mensaje inicial
+    function showInitialMessage() {
+      setTimeout(() => {
+        const modal = document.getElementById('customModal');
+        const title = document.getElementById('modalTitle');
+        const message = document.getElementById('modalMessage');
+        
+        title.textContent = '¡Hola preciosa! 💕';
+        message.textContent = 'Prueba a pinchar sobre los días de la cuenta atrás';
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }, 3000);
+    }
+
+    // Cerrar modales con ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+        closeImageModal();
+      }
+    });
+
+    // Cerrar modal de imagen al hacer clic fuera
+    document.getElementById('imageModal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        closeImageModal();
+      }
+    });
+
+    // Cerrar modal personalizado al hacer clic fuera
+    document.getElementById('customModal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        closeModal();
+      }
+    });
+
     // Inicializar todo
+    createFloralExplosion();
     createFloatingHearts();
     createDaysGrid();
     updateDailyMessage();
     updateCountdown();
+    showInitialMessage();
     setInterval(updateCountdown, 1000);
     
     // Actualizar la cuadrícula cada hora
