@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ya casi vuelvo a ti...</title>
   <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🧡</text></svg>'>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
+ <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@100;300;400;500;600;800&display=swap" rel="stylesheet">
+ <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -14,7 +14,7 @@
     }
 
     body {
-      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
       font-family: 'Poppins', sans-serif;
       color: #333;
       min-height: 100vh;
@@ -129,8 +129,9 @@
       font-weight: 700;
       color: #fff;
       margin-bottom: 15px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      text-shadow: 0 8px 32px rgba(0,0,0,0.3);
       animation: pulse 2s ease-in-out infinite alternate;
+      letter-spacing: 2px;
     }
 
     @keyframes pulse {
@@ -138,39 +139,50 @@
       to { transform: scale(1.05); }
     }
 
-    .subtitle {
-      font-size: 1.3rem;
-      margin-bottom: 40px;
-      color: #fff;
-      font-weight: 300;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-      opacity: 0.9;
-    }
+  .subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: #fff;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    opacity: 0.9;
+  }
 
     .main-countdown {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 30px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 35px;
       border-radius: 30px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
       margin-bottom: 50px;
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.4s ease;
+    }
+
+    .main-countdown:hover {
+      transform: scale(1.02) translateY(-5px);
+      box-shadow: 0 35px 70px -12px rgba(0,0,0,0.3);
+    }
+
+      .secondary-countdown:hover {
+      transform: scale(1.02) translateY(-5px);
+      box-shadow: 0 35px 70px -12px rgba(0,0,0,0.3);
     }
 
     .countdown-display {
       font-size: 2.8rem;
-      font-weight: 600;
-      color: #e91e63;
+      font-weight: 800;
+      color: #fff;
       margin-bottom: 15px;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      text-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .countdown-label {
       font-size: 1rem;
-      color: #666;
+      color: rgba(255, 255, 255, 0.9);
       font-weight: 300;
+      letter-spacing: 0.5px;
     }
-
     /* Cuadrícula de días */
     .days-grid-container {
       margin: 50px 0;
@@ -184,17 +196,26 @@
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
-    .days-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-      gap: 15px;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 30px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 25px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    }
+  .days-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(8px, 2vw, 15px);
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 30px;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+  }
+
+  .days-grid:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 35px 70px -12px rgba(0,0,0,0.3);
+  }
 
     .day-box {
       width: 60px;
@@ -210,11 +231,12 @@
       cursor: pointer;
     }
 
-    .day-box.passed {
-      background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
-      color: white;
-      transform: scale(0.9);
-    }
+  .day-box.passed {
+    background: linear-gradient(135deg, #ff7c7c 0%, #ff5858 100%);
+    color: transparent; /* CAMBIAR: era 'white', ahora 'transparent' */
+    transform: scale(0.9);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+  }
 
     .day-box.passed::after {
       content: '✗';
@@ -223,6 +245,7 @@
       color: white;
       font-weight: bold;
     }
+
 
     .day-box.current {
       background: linear-gradient(135deg, #ffd93d, #ff9a56);
@@ -599,6 +622,58 @@
       box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
       background: linear-gradient(135deg, #128c7e, #075e54);
     }
+
+    .sparkle {
+  position: absolute;
+  color: #FFD700;
+  font-size: 12px;
+  animation: sparkleAnimation 1.5s ease-out forwards;
+  pointer-events: none;
+}
+
+.secondary-countdown {
+  background: rgba(255, 255, 255, 0.10);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px -10px rgba(0,0,0,0.2);
+  margin: -40px auto 40px auto;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: 500px;
+}
+
+.countdown-display.small {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+
+@keyframes sparkleAnimation {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+    @keyframes glow {
+  from {
+    box-shadow: 0 0 25px rgba(255, 210, 63, 0.7), 0 0 40px rgba(255, 165, 0, 0.4);
+  }
+  to {
+    box-shadow: 0 0 35px rgba(255, 210, 63, 1), 0 0 60px rgba(255, 165, 0, 0.8);
+  }
+}
+
+
   </style>
 </head>
 <body>
@@ -617,6 +692,11 @@
       <div class="countdown-display" id="timer">Cargando...</div>
       <div class="countdown-label">hasta volver a darte un besikiki</div>
     </div>
+
+    <div class="secondary-countdown">
+    <div class="countdown-display small" id="timer2">Cargando segundo contador...</div>
+    <div class="countdown-label">para la próxima videollamada 💻</div>
+  </div>
 
     <!-- Cuadrícula de días -->
     <div class="days-grid-container">
@@ -667,6 +747,29 @@
   </a>
 
   <script>
+
+    const targetDate2 = new Date('2025-06-06T17:30:00'); // fecha para el segundo evento
+
+    function updateCountdown2() {
+      const now = new Date();
+      const diff = targetDate2 - now;
+
+      const element = document.getElementById('timer2');
+
+      if (diff <= 0) {
+        element.innerHTML = '¡Ya empezó! 💕';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      element.innerHTML = 
+        `<strong>${days}</strong> días <strong>${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}</strong>`;
+    }
+
     const targetDate = new Date('2025-06-17T22:10:00');
     const startDate = new Date('2025-05-29T20:00:00');
     
@@ -763,14 +866,13 @@
         
         sparkle.style.left = x + 'px';
         sparkle.style.top = y + 'px';
-        sparkle.style.animationDelay = Math.random() * 0.5 + 's';
         
         sparkleContainer.appendChild(sparkle);
         
         setTimeout(() => {
           sparkle.remove();
         }, 1500);
-      }, 200);
+      }, 300); // CAMBIAR: era 200ms, ahora 300ms para mejor rendimiento
     }
 
     function createDaysGrid() {
@@ -901,16 +1003,47 @@
 
     // Mensaje inicial
     function showInitialMessage() {
-      setTimeout(() => {
+      const messages = [
+        { title: 'Baby! 💕', message: 'Cómo has dormido hoy mi princesa hermosa?' },
+        { title: 'Te tengo que decir una cosa 🤔', message: 'Y es que sé que no te gusta mucho que te hable de la Evau' },
+        { title: 'Peeero ⚠️', message: 'No he podido evitar ver que cada vez queda menos...' },
+        { title: 'Así que... 🤍', message: 'Me he visto forzado a añadir otro contador... para nuestras videollamadas 💖' },
+        { title: 'Lo tienes casi 🎉', message: 'MUCHISÍMO ÁNIMO MI NIÑA PRECIOSA, TE QUIERO Y ESTÁS MÁS QUE PREPARADA PARA TODO LO QUE TE PUEDA VENIR' }
+      ];
+      
+      let currentMessage = 0;
+      
+      function showNextMessage() {
+        if (currentMessage < messages.length) {
+          const modal = document.getElementById('customModal');
+          const title = document.getElementById('modalTitle');
+          const message = document.getElementById('modalMessage');
+          
+          title.textContent = messages[currentMessage].title;
+          message.textContent = messages[currentMessage].message;
+          modal.classList.add('show');
+          document.body.style.overflow = 'hidden';
+          currentMessage++;
+        }
+      }
+      
+      // Mostrar primer mensaje después de 3 segundos
+      setTimeout(showNextMessage, 3000);
+      
+      // Interceptar el botón de cerrar para mostrar siguiente mensaje
+      const originalCloseModal = window.closeModal;
+      window.closeModal = function() {
         const modal = document.getElementById('customModal');
-        const title = document.getElementById('modalTitle');
-        const message = document.getElementById('modalMessage');
+        modal.classList.remove('show');
+        document.body.style.overflow = 'auto';
         
-        title.textContent = '¡Hola preciosa! 💕';
-        message.textContent = 'Prueba a pinchar sobre los días de la cuenta atrás';
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-      }, 3000);
+        if (currentMessage < messages.length) {
+          setTimeout(showNextMessage, 800);
+        } else {
+          // Restaurar función original después del último mensaje
+          window.closeModal = originalCloseModal;
+        }
+      };
     }
 
     // Cerrar modales con ESC
@@ -941,11 +1074,13 @@
     createDaysGrid();
     updateDailyMessage();
     updateCountdown();
+    updateCountdown2();
     showInitialMessage();
     setInterval(updateCountdown, 1000);
-    
-    // Actualizar la cuadrícula cada hora
-    setInterval(createDaysGrid, 3600000);
+    setInterval(updateCountdown2, 1000);
+
+    // Actualizar la cuadrícula cada media hora
+    setInterval(createDaysGrid, 1800000);
   </script>
 </body>
 </html>
