@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ya casi vuelvo a ti...</title>
-  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🌅</text></svg>'>
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🔥</text></svg>'>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <audio id="hotSound" src="sounds/moan.mp3" preload="auto"></audio>
   <style>
     * {
       box-sizing: border-box;
@@ -14,9 +15,9 @@
     }
 
     body {
-      background: linear-gradient(180deg, #FF6B35 0%, #F7931E 30%, #FFD23F 60%, #FFEAA7 80%, #DDA0DD 100%);
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d1b2e 50%, #ff4500 100%);
       font-family: 'Poppins', sans-serif;
-      color: #333;
+      color: #fff;
       min-height: 100vh;
       padding: 20px;
       text-align: center;
@@ -24,40 +25,8 @@
       position: relative;
     }
 
-    /* Ondas del mar animadas */
-    .ocean-waves {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: linear-gradient(180deg, transparent 0%, rgba(30, 144, 255, 0.3) 50%, rgba(0, 119, 190, 0.5) 100%);
-      z-index: 1;
-    }
-
-    .wave {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 200%;
-      height: 100px;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%23ffffff" fill-opacity="0.2"></path></svg>') repeat-x;
-      animation: wave 10s linear infinite;
-    }
-
-    .wave:nth-child(2) {
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%2300bfff" fill-opacity="0.3"></path></svg>') repeat-x;
-      animation: wave 8s linear infinite reverse;
-      bottom: 10px;
-    }
-
-    @keyframes wave {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* Animación de entrada tropical */
-    .tropical-explosion {
+    /* Animación de entrada de llamas */
+    .floral-explosion {
       position: fixed;
       top: 0;
       left: 0;
@@ -67,14 +36,14 @@
       z-index: 9999;
     }
 
-    .tropical-item {
+    .flower {
       position: absolute;
       font-size: 30px;
-      animation: tropicalExplosion 3s ease-out forwards;
+      animation: flameExplosion 3s ease-out forwards;
       opacity: 0;
     }
 
-    @keyframes tropicalExplosion {
+    @keyframes flameExplosion {
       0% {
         transform: scale(0) rotate(0deg);
         opacity: 1;
@@ -89,8 +58,8 @@
       }
     }
 
-    /* Elementos flotantes veraniegos */
-    .summer-floating {
+    /* Emojis flotantes hot */
+    .floating-hearts {
       position: fixed;
       top: 0;
       left: 0;
@@ -100,24 +69,24 @@
       z-index: 1;
     }
 
-    .floating-element {
+    .heart {
       position: absolute;
-      color: rgba(255, 255, 255, 0.4);
+      color: rgba(255, 69, 0, 0.4);
       font-size: 20px;
-      animation: summerFloat 12s infinite linear;
+      animation: float 8s infinite linear;
     }
 
-    .floating-element:nth-child(odd) {
-      color: rgba(255, 182, 193, 0.5);
+    .heart:nth-child(odd) {
+      color: rgba(255, 140, 0, 0.5);
       font-size: 16px;
     }
 
-    .floating-element:nth-child(3n) {
-      color: rgba(255, 215, 0, 0.6);
+    .heart:nth-child(3n) {
+      color: rgba(255, 69, 0, 0.6);
       font-size: 24px;
     }
 
-    @keyframes summerFloat {
+    @keyframes float {
       0% {
         transform: translateY(100vh) rotate(0deg);
         opacity: 0;
@@ -159,57 +128,57 @@
       font-family: 'Dancing Script', cursive;
       font-size: 4rem;
       font-weight: 700;
-      color: #fff;
+      color: #ff4500;
       margin-bottom: 15px;
-      text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
-      animation: sunsetPulse 3s ease-in-out infinite alternate;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      animation: fireGlow 2s ease-in-out infinite alternate;
     }
 
-    @keyframes sunsetPulse {
+    @keyframes fireGlow {
       from { 
-        transform: scale(1); 
-        text-shadow: 3px 3px 6px rgba(0,0,0,0.4), 0 0 20px rgba(255, 215, 0, 0.3);
+        transform: scale(1);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(255, 69, 0, 0.5);
       }
       to { 
-        transform: scale(1.05); 
-        text-shadow: 3px 3px 6px rgba(0,0,0,0.4), 0 0 30px rgba(255, 215, 0, 0.5);
+        transform: scale(1.05);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 30px rgba(255, 69, 0, 0.8);
       }
     }
 
     .subtitle {
       font-size: 1.3rem;
       margin-bottom: 40px;
-      color: #fff;
+      color: #ff8c00;
       font-weight: 300;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-      opacity: 0.95;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+      opacity: 0.9;
     }
 
     .main-countdown {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 248, 220, 0.95) 100%);
+      background: rgba(0, 0, 0, 0.8);
       padding: 30px;
       border-radius: 30px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      box-shadow: 0 20px 40px rgba(255, 69, 0, 0.3);
       margin-bottom: 50px;
       backdrop-filter: blur(10px);
-      border: 3px solid rgba(255, 215, 0, 0.3);
+      border: 2px solid rgba(255, 69, 0, 0.4);
     }
 
     .countdown-display {
       font-size: 2.8rem;
       font-weight: 600;
-      color: #FF6B35;
+      color: #ff4500;
       margin-bottom: 15px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     }
 
     .countdown-label {
       font-size: 1rem;
-      color: #666;
+      color: #ff8c00;
       font-weight: 300;
     }
 
-    /* Cuadrícula de días con tema playero */
+    /* Cuadrícula de días */
     .days-grid-container {
       margin: 50px 0;
     }
@@ -217,9 +186,9 @@
     .days-grid-title {
       font-family: 'Dancing Script', cursive;
       font-size: 2.5rem;
-      color: #fff;
+      color: #ff4500;
       margin-bottom: 30px;
-      text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
     }
 
     .days-grid {
@@ -229,10 +198,10 @@
       max-width: 800px;
       margin: 0 auto;
       padding: 30px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 248, 220, 0.9) 100%);
+      background: rgba(0, 0, 0, 0.7);
       border-radius: 25px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-      border: 2px solid rgba(255, 215, 0, 0.2);
+      box-shadow: 0 15px 35px rgba(255, 69, 0, 0.2);
+      border: 1px solid rgba(255, 69, 0, 0.3);
     }
 
     .day-box {
@@ -250,56 +219,51 @@
     }
 
     .day-box.passed {
-      background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
-      color: transparent;;
+      background: linear-gradient(135deg, #8b0000, #ff0000);
+      color: white;
       transform: scale(0.9);
-      box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
     }
 
     .day-box.passed::after {
-      content: '🌊';
+      content: '🔥';
       position: absolute;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: white;
       font-weight: bold;
     }
 
     .day-box.current {
-      background: linear-gradient(135deg, #FFD23F 0%, #FFA500 100%);
+      background: linear-gradient(135deg, #ff4500, #ff6500);
       color: white;
-      animation: sunGlow 1.5s ease-in-out infinite alternate;
+      animation: hotGlow 1.5s ease-in-out infinite alternate;
       transform: scale(1.1);
-      box-shadow: 0 0 25px rgba(255, 210, 63, 0.7);
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
     }
 
     .day-box.future {
-      background: linear-gradient(135deg, #87CEEB 0%, #ADD8E6 100%);
-      color: #666;
-      border: 2px solid rgba(255, 255, 255, 0.4);
+      background: linear-gradient(135deg, #333, #555);
+      color: #ff8c00;
+      border: 2px solid rgba(255, 69, 0, 0.3);
     }
 
     .day-box.future:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(135, 206, 235, 0.4);
+      box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
     }
 
-    @keyframes sunGlow {
-      from { 
-        box-shadow: 0 0 25px rgba(255, 210, 63, 0.7), 0 0 40px rgba(255, 165, 0, 0.4);
-      }
-      to { 
-        box-shadow: 0 0 35px rgba(255, 210, 63, 0.9), 0 0 50px rgba(255, 165, 0, 0.6);
-      }
+    @keyframes hotGlow {
+      from { box-shadow: 0 0 20px rgba(255, 69, 0, 0.8); }
+      to { box-shadow: 0 0 30px rgba(255, 69, 0, 1); }
     }
 
-    /* Modal personalizado con tema playero */
+    /* Modal personalizado */
     .custom-modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.9);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -315,16 +279,16 @@
     }
 
     .modal-content {
-      background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FFD23F 100%);
+      background: linear-gradient(135deg, #1a1a1a, #2d1b2e);
       padding: 30px;
       border-radius: 25px;
       text-align: center;
       max-width: 400px;
       width: 90%;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 20px 60px rgba(255, 69, 0, 0.5);
       transform: scale(0.8);
       transition: transform 0.3s ease;
-      border: 3px solid rgba(255, 255, 255, 0.3);
+      border: 2px solid rgba(255, 69, 0, 0.4);
     }
 
     .custom-modal.show .modal-content {
@@ -334,21 +298,21 @@
     .modal-title {
       font-family: 'Dancing Script', cursive;
       font-size: 2.5rem;
-      color: #fff;
+      color: #ff4500;
       margin-bottom: 15px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
     }
 
     .modal-message {
-      color: #fff;
+      color: #ff8c00;
       font-size: 1.2rem;
       margin-bottom: 25px;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     }
 
     .modal-close {
-      background: rgba(255, 255, 255, 0.95);
-      color: #FF6B35;
+      background: linear-gradient(135deg, #ff4500, #ff6500);
+      color: #fff;
       border: none;
       padding: 12px 25px;
       border-radius: 25px;
@@ -356,23 +320,22 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .modal-close:hover {
-      background: white;
+      background: linear-gradient(135deg, #ff6500, #ff8500);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      box-shadow: 0 5px 15px rgba(255, 69, 0, 0.5);
     }
 
-    /* Modal de imagen con marco playero */
+    /* Modal de imagen */
     .image-modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.95);
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -389,14 +352,13 @@
 
     .image-modal-content {
       position: relative;
-      max-width: 70%;
-      max-height: 70%;
-      border-radius: 15px;
+      max-width: 40%;
+      max-height: 40%;
+      border-radius: 10px;
       overflow: visible;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 20px 60px rgba(255, 69, 0, 0.6);
       transform: scale(0.8);
       transition: transform 0.3s ease;
-      border: 4px solid #FFD23F;
     }
 
     .image-modal.show .image-modal-content {
@@ -408,14 +370,15 @@
       max-height: 100%;
       object-fit: contain;
       display: block;
-      border-radius: 15px;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 69, 0, 0.4);
     }
 
     .image-close {
       position: absolute;
       top: 15px;
       right: 15px;
-      background: linear-gradient(135deg, #FFD23F 0%, #FFA500 100%);
+      background: linear-gradient(135deg, #ff4500, #ff6500);
       color: #fff;
       border: none;
       width: 40px;
@@ -427,15 +390,14 @@
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
     .image-close:hover {
-      background: linear-gradient(135deg, #FFA500 0%, #FF6B35 100%);
+      background: linear-gradient(135deg, #ff6500, #ff8500);
       transform: scale(1.1);
     }
 
-    /* Animación especial para día actual con sol */
+    /* Animación especial para día actual */
     .current-day-sparkle {
       position: absolute;
       top: 50%;
@@ -445,43 +407,19 @@
     }
 
     .sparkle {
-    position: absolute;
-    font-size: 14px;
-    color: #FFD700;
-    animation: sparkleFade 1.5s ease-out forwards;
-    pointer-events: none;
-  }
-
-  @keyframes sparkleFade {
-    0% {
-      transform: scale(0);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.2);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-  }
-
-
-    .sun-ray {
       position: absolute;
-      color: #FFD700;
+      color: #ff4500;
       font-size: 12px;
-      animation: sunRays 2s ease-out infinite;
+      animation: sparkle 1.5s ease-out infinite;
     }
 
-    @keyframes sunRays {
+    @keyframes sparkle {
       0% {
         transform: scale(0) rotate(0deg);
         opacity: 1;
       }
       50% {
-        transform: scale(1.2) rotate(180deg);
+        transform: scale(1) rotate(180deg);
         opacity: 1;
       }
       100% {
@@ -490,30 +428,29 @@
       }
     }
 
-    /* Mensajes románticos con tema veraniego */
+    /* Mensajes sensuales */
     .love-messages {
       margin: 50px 0;
     }
 
     .message-card {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 248, 220, 0.95) 100%);
+      background: rgba(0, 0, 0, 0.8);
       padding: 25px;
       border-radius: 20px;
       margin: 20px 0;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      box-shadow: 0 10px 25px rgba(255, 69, 0, 0.3);
       font-style: italic;
-      color: #666;
+      color: #ff8c00;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      border-left: 4px solid #FF6B35;
-      border: 2px solid rgba(255, 215, 0, 0.2);
+      border-left: 4px solid #ff4500;
     }
 
     .message-card::before {
       content: '"';
       font-size: 3rem;
-      color: #FF6B35;
+      color: #ff4500;
       position: relative;
       top: 10px;
       left: -5px;
@@ -522,15 +459,15 @@
     .message-card::after {
       content: '"';
       font-size: 3rem;
-      color: #FF6B35;
+      color: #ff4500;
       position: relative;
       top: 10px;
       right: -5px;
     }
 
-    /* Botón especial con gradiente veraniego */
+    /* Botón especial */
     .special-button {
-      background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FFD23F 100%);
+      background: linear-gradient(135deg, #ff4500, #ff6500);
       color: white;
       border: none;
       padding: 15px 30px;
@@ -540,31 +477,13 @@
       cursor: pointer;
       transition: all 0.3s ease;
       margin: 30px 0;
-      box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+      box-shadow: 0 10px 25px rgba(255, 69, 0, 0.4);
     }
 
     .special-button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(255, 107, 53, 0.5);
-    }
-
-    /* Success message especial */
-    .success-message {
-      background: linear-gradient(135deg, #32CD32 0%, #228B22 100%);
-      color: white;
-      padding: 20px;
-      border-radius: 15px;
-      margin: 20px 0;
-      font-size: 1.5rem;
-      font-weight: 600;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-      box-shadow: 0 10px 25px rgba(50, 205, 50, 0.3);
-      animation: successPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes successPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.02); }
+      box-shadow: 0 15px 35px rgba(255, 69, 0, 0.6);
+      background: linear-gradient(135deg, #ff6500, #ff8500);
     }
 
     /* Responsive */
@@ -609,10 +528,6 @@
       .modal-message {
         font-size: 1.1rem;
       }
-
-      .ocean-waves {
-        height: 60px;
-      }
     }
 
     @media (max-width: 480px) {
@@ -644,39 +559,36 @@
       .modal-message {
         font-size: 1rem;
       }
-
-      .ocean-waves {
-        height: 50px;
-      }
     }
 
-    /* Footer veraniego */
+    /* Footer sensual */
     .footer {
       margin-top: 60px;
       margin-bottom: 20px;
-      color: #fff;
+      color: #ff8c00;
       font-size: 1.1rem;
       font-weight: 600;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
     }
 
-    .footer .sun-emoji {
-      color: #FFD700;
+    .footer .heart-emoji {
+      color: #ff4500;
       font-size: 1.3rem;
-      animation: sunRotate 3s linear infinite;
+      animation: heartbeat 1.5s ease-in-out infinite;
     }
 
-    @keyframes sunRotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
 
-    /* Botón de WhatsApp veraniego */
+    /* Botón de WhatsApp */
     .whatsapp-button {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: linear-gradient(135deg, #25d366, #128c7e);
+      background: linear-gradient(135deg, #ff4500, #ff6500);
       color: white;
       border: none;
       padding: 12px 20px;
@@ -685,7 +597,7 @@
       font-weight: 500;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+      box-shadow: 0 8px 20px rgba(255, 69, 0, 0.5);
       z-index: 1000;
       text-decoration: none;
       display: flex;
@@ -695,56 +607,103 @@
 
     .whatsapp-button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
-      background: linear-gradient(135deg, #128c7e, #075e54);
+      box-shadow: 0 12px 30px rgba(255, 69, 0, 0.7);
+      background: linear-gradient(135deg, #ff6500, #ff8500);
     }
+
+  .fog-layer {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('images/fog.png') no-repeat center center / cover;
+    opacity: 0.1;
+    pointer-events: none;
+    animation: fogPulse 10s infinite ease-in-out;
+    z-index: 3;
+  }
+  @keyframes fogPulse {
+    0%, 100% { opacity: 0.08; }
+    50% { opacity: 0.15; }
+  }
+  .explicit-lock {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10001;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+  }
+  .explicit-lock input {
+    padding: 10px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: none;
+    margin-top: 10px;
+    width: 200px;
+  }
+  .explicit-lock button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #ff4500;
+    border: none;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+</style>
   </style>
 </head>
 <body>
-  <!-- Ondas del mar -->
-  <div class="ocean-waves">
-    <div class="wave"></div>
-    <div class="wave"></div>
+    <div class="fog-layer"></div>
+  <div class="explicit-lock" id="explicitLock">
+    <div>🔐 Ingresa la clave caliente:</div>
+    <input type="password" id="explicitInput" placeholder="...">
+    <button onclick="unlockExplicit()">Entrar</button>
   </div>
 
-  <!-- Animación de entrada tropical -->
-  <div class="tropical-explosion" id="tropicalExplosion"></div>
+  <!-- Animación de entrada de llamas -->
+  <div class="floral-explosion" id="floralExplosion"></div>
 
-  <!-- Elementos flotantes veraniegos -->
-  <div class="summer-floating" id="summerFloating"></div>
+  <!-- Emojis flotantes hot -->
+  <div class="floating-hearts" id="hearts"></div>
 
   <div class="container">
     <h1>Cuenta atrás</h1>
-    <p class="subtitle">para volver a verte bajo el sol del atardecer</p>
+    <p class="subtitle">para volver a sentir tu calor junto a mí</p>
 
     <!-- Contador principal -->
     <div class="main-countdown">
       <div class="countdown-display" id="timer">Cargando...</div>
-      <div class="countdown-label">hasta nuestro verano juntos</div>
+      <div class="countdown-label">hasta volver a encender la pasión</div>
     </div>
 
     <!-- Cuadrícula de días -->
     <div class="days-grid-container">
-      <h2 class="days-grid-title">Cada puesta de sol nos acerca más</h2>
+      <h2 class="days-grid-title">Cada día que pasa aumenta las ganas</h2>
       <div class="days-grid" id="daysGrid"></div>
     </div>
 
-    <!-- Mensajes románticos -->
+    <!-- Mensajes sensuales -->
     <div class="love-messages">
       <div class="message-card" id="dailyMessage">
-        🌅 LO HAS CONSEGUIDO 🌅
+        El fuego sigue ardiendo... 🔥
       </div>
     </div>
 
     <!-- Botón especial -->
     <button class="special-button" onclick="showLoveMessage()">
-      🌺 Pulsa para recibir un mensaje veraniego 🌺
+      🔥 Pulsa para encender la llama 🔥
     </button>
 
     <div class="footer">
-      <p>Brillando como el sol hasta que llegue a la playa contigo <span class="sun-emoji">☀️</span></p>
-      <p style="margin-top: 10px; font-size: 0.9rem; font-weight: 600; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
-        Con todo mi amor desde Italia, esperando nuestro atardecer 🇮🇹🌅
+      <p>El deseo crece con cada segundo que pasa <span class="heart-emoji">🔥</span></p>
+      <p style="margin-top: 10px; font-size: 0.9rem; font-weight: 600; color: #ff8c00; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+        Ardiendo por ti desde Italia 🇮🇹
       </p>
     </div>
   </div>
@@ -753,76 +712,53 @@
   <div class="custom-modal" id="customModal">
     <div class="modal-content">
       <div class="modal-title" id="modalTitle">¡Ey!</div>
-      <div class="modal-message" id="modalMessage">Todavía no puedes abrirlo impacientona 🌊</div>
-      <button class="modal-close" onclick="closeModal()">Vale, vale 😊</button>
+      <div class="modal-message" id="modalMessage">Sé que tienes ganas pero con calma bellaka 🔥</div>
+      <button class="modal-close" onclick="closeModal()">Me gusta😏</button>
     </div>
   </div>
 
   <!-- Modal de imagen -->
   <div class="image-modal" id="imageModal">
     <div class="image-modal-content">
-      <img id="modalImage" src="" alt="Foto del día">
+      <img id="modalImage" src="" alt="Momento ardiente">
       <button class="image-close" onclick="closeImageModal()">×</button>
     </div>
   </div>
 
   <!-- Botón de WhatsApp -->
-  <a href="https://wa.me/+34638707783?text=Hola%20guapo%20hablas%20?" class="whatsapp-button" target="_blank">
-    Me echas de menos? Pulsa 🌴
+  <a href="https://wa.me/+34638707783?text=Te%20quiero%20dentro%20de%20mi" class="whatsapp-button" target="_blank">
+    Te tengo ardiendo? Pulsa 🔥
   </a>
 
   <script>
     const targetDate = new Date('2025-06-17T22:10:00');
     const startDate = new Date('2025-05-29T20:00:00');
     
-    const loveMessages = [
-      "🌅 LO HAS CONSEGUIDO 🌅",
-      "italia 2026 is gonna go craaaazy bajo el sol :)",
-      "bella kiii taaaa como una puesta de sol 🌅",
-      "ahí estas derrapando eh peque, como las olas en la playa 🌊",
-      "y debería ser un de liii tooo, yo dejarte de mirar como el horizonte 🌹",
-      "tq como el sol ama al mar ☀️",
-      "te echo de menos como la playa echa de menos la marea 🏖️💕",
-      "el 17 empieza nuestro verdadero verano eterno 🌴",
-      "sí, estoy mirando el atardecer y pensando en ti ahora mismo 🌅"
-    ];
+  const loveMessages = [
+    "me tienes loco con esa sonrisa 🔥",
+    "no puedo parar de pensar en ti 🍑",
+    "cada noche sueño contigo 💧",
+    "eres puro fuego, baby 🔥",
+    "me voy a tatuar una L 🍆",
+    "no sabes las ganas que tengo de verte 💧",
+    "eres mi debilidad más dulce 🍑",
+    "el 17 va a ser... intenso 🔥",
+    "estoy imaginando tus manos… y no precisamente sobre el teclado 😈",
+    "la próxima vez no me vas a dejar dormir 😵‍💫",
+    "prepárate para sudar, y no por el calor de junio... 🔥",
+    "cuando estemos solos, sin ropa, sin pausa, sin hora pero con reloj 💦"
+  ];
 
-    // Animación tropical de entrada
-    function createTropicalExplosion() {
-      const container = document.getElementById('tropicalExplosion');
-      const tropicalItems = ['🌺', '🌴', '🌊', '🌅', '☀️', '🏖️', '🐚', '⭐', '✨', '🌟', '🍹', '🦋'];
-      
-      for (let i = 0; i < 25; i++) {
-        setTimeout(() => {
-          const item = document.createElement('div');
-          item.className = 'tropical-item';
-          item.innerHTML = tropicalItems[Math.floor(Math.random() * tropicalItems.length)];
-          item.style.left = Math.random() * 100 + '%';
-          item.style.top = Math.random() * 100 + '%';
-          item.style.animationDelay = Math.random() * 0.5 + 's';
-          container.appendChild(item);
-          
-          setTimeout(() => {
-            item.remove();
-          }, 3000);
-        }, i * 80);
-      }
-      
-      // Remover el contenedor después de la animación
-      setTimeout(() => {
-        container.style.display = 'none';
-      }, 4000);
-    }
-
+    // Animación de llamas de entrada
     function createFloralExplosion() {
       const container = document.getElementById('floralExplosion');
-      const flowers = ['🌸', '🌺', '🌷', '🌹', '💐', '🌻', '🌼', '🌟', '✨', '💫'];
+      const flames = ['🔥', '🔥', '🍆', '🍑', '💧', '💧', '🍑', '🍆'];
       
       for (let i = 0; i < 20; i++) {
         setTimeout(() => {
           const flower = document.createElement('div');
           flower.className = 'flower';
-          flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+          flower.innerHTML = flames[Math.floor(Math.random() * flames.length)];
           flower.style.left = Math.random() * 100 + '%';
           flower.style.top = Math.random() * 100 + '%';
           flower.style.animationDelay = Math.random() * 0.5 + 's';
@@ -840,24 +776,24 @@
       }, 4000);
     }
 
-    function createSummerFloating() {
-      const floatingContainer = document.getElementById('summerFloating');
+    function createFloatingHearts() {
+      const heartsContainer = document.getElementById('hearts');
       setInterval(() => {
-        const element = document.createElement('div');
-        element.className = 'floating-element';
+        const heart = document.createElement('div');
+        heart.className = 'heart';
         
-        // Variedad de elementos veraniegos
-        const summerElements = ['🌊', '🌅', '☀️', '🌺', '🌴', '🐚', '⭐', '🦋', '🍹', '🏖️'];
-        element.innerHTML = summerElements[Math.floor(Math.random() * summerElements.length)];
+        // Emojis hot
+        const hotEmojis = ['🔥', '🍆', '🍑', '💧', '💥', '✨'];
+        heart.innerHTML = hotEmojis[Math.floor(Math.random() * hotEmojis.length)];
         
-        element.style.left = Math.random() * 100 + '%';
-        element.style.animationDuration = (Math.random() * 4 + 8) + 's';
-        element.style.top = Math.random() * 100 + '%';
-        floatingContainer.appendChild(element);
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+        heartsContainer.appendChild(heart);
+        
         setTimeout(() => {
-          element.remove();
-        }, 12000);
-        }, 2000);
+          heart.remove();
+        }, 8000);
+      }, 500);
     }
 
     function updateCountdown() {
@@ -865,7 +801,7 @@
       const diff = targetDate - now;
 
       if (diff <= 0) {
-        document.getElementById('timer').innerHTML = '¡Ya estoy contigo! 💕';
+        document.getElementById('timer').innerHTML = '¡Ya estoy aquí para ti! 🔥';
         return;
       }
 
@@ -886,7 +822,7 @@
       setInterval(() => {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
-        sparkle.innerHTML = '✨';
+        sparkle.innerHTML = '🔥';
         
         const angle = Math.random() * 360;
         const distance = 30 + Math.random() * 20;
@@ -941,7 +877,7 @@
       const img = document.getElementById('modalImage');
       img.src = `images/im${day}.jpg`;
       img.onerror = () => {
-        img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmY5YTllIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZvdG8gZGVsIGTDrWEgJyArIGRheSArICc8L3RleHQ+PC9zdmc+';
+        img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMzMzIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2ZmNDUwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk1vbWVudG8gZGVsIGTDrWEgJyArIGRheSArICc8L3RleHQ+PC9zdmc+';
       };
       modal.classList.add('show');
       document.body.style.overflow = 'hidden';
@@ -959,7 +895,7 @@
       
       for (let i = 0; i < 12; i++) {
         const heart = document.createElement('div');
-        heart.innerHTML = '🥳';
+        heart.innerHTML = '🍑';
         heart.style.position = 'fixed';
         heart.style.left = centerX + 'px';
         heart.style.top = centerY + 'px';
@@ -1002,7 +938,7 @@
       const message = document.getElementById('modalMessage');
       
       title.textContent = '¡Ey! 💕';
-      message.textContent = 'Todavía no puedes abrirlo impacientona';
+      message.textContent = 'Sé que tienes ganas pero con calma bellaka 🔥';
       modal.classList.add('show');
       document.body.style.overflow = 'hidden';
     }
@@ -1016,13 +952,14 @@
     function showLoveMessage() {
       const messageElement = document.getElementById('dailyMessage');
       const randomMessage = loveMessages[Math.floor(Math.random() * loveMessages.length)];
-      
+      document.getElementById("hotSound").play();
       messageElement.style.opacity = '0';
       setTimeout(() => {
         messageElement.textContent = randomMessage;
         messageElement.style.opacity = '1';
       }, 300);
-    }
+    };
+  
 
     function updateDailyMessage() {
       const now = new Date();
@@ -1038,8 +975,8 @@
         const title = document.getElementById('modalTitle');
         const message = document.getElementById('modalMessage');
         
-        title.textContent = 'LUUCIAAAAAA 💕';
-        message.textContent = 'LO HAS HECHO, ESTOY ORGULLOSÍSIMO DE TI. VERANOO 🥥';
+        title.textContent = 'Hola, "princesita" 🔥';
+        message.textContent = 'Hoy notarás la web un poco más ... caliente';
         modal.classList.add('show');
         document.body.style.overflow = 'hidden';
       }, 3000);
@@ -1069,8 +1006,7 @@
 
     // Inicializar todo
     createFloralExplosion();
-    createTropicalExplosion();
-    createSummerFloating();
+    createFloatingHearts();
     createDaysGrid();
     updateDailyMessage();
     updateCountdown();
@@ -1079,6 +1015,30 @@
     
     // Actualizar la cuadrícula cada hora
     setInterval(createDaysGrid, 3600000);
+
+
+    const explicitPassword = "talmh1000"; // cambiar si lo deseas
+    const unlockedExplicit = localStorage.getItem("unlockedExplicit");
+    if (!unlockedExplicit) {
+      document.getElementById('explicitLock').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function unlockExplicit() {
+      const val = document.getElementById("explicitInput").value;
+      if (val.toLowerCase() === explicitPassword) {
+        localStorage.setItem("unlockedExplicit", true);
+        document.getElementById('explicitLock').style.display = 'none';
+        document.body.style.overflow = 'auto';
+      } else {
+        alert("Clave incorrecta 😈");
+      }
+    }
+
+    document.querySelector('.heart-emoji').addEventListener('dblclick', () => {
+    alert("Modo travieso activado... 🔓 ¿Estás lista?");
+    });
+
   </script>
 </body>
 </html>
