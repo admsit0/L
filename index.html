@@ -4,20 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ya casi vuelvo a ti...</title>
-  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🔥</text></svg>'>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <audio id="hotSound" src="sounds/moan.mp3" preload="auto"></audio>
-  <style>
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🧡</text></svg>'>
+ <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@100;300;400;500;600;800&display=swap" rel="stylesheet">
+ <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    body {
-      background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d1b2e 50%, #ff4500 100%);
+body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 70%, #ffeaa7 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 5s ease infinite;
       font-family: 'Poppins', sans-serif;
-      color: #fff;
+      color: #333;
       min-height: 100vh;
       padding: 20px;
       text-align: center;
@@ -25,7 +26,13 @@
       position: relative;
     }
 
-    /* Animación de entrada de llamas */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Animación de entrada floreal */
     .floral-explosion {
       position: fixed;
       top: 0;
@@ -39,11 +46,11 @@
     .flower {
       position: absolute;
       font-size: 30px;
-      animation: flameExplosion 3s ease-out forwards;
+      animation: floralExplosion 3s ease-out forwards;
       opacity: 0;
     }
 
-    @keyframes flameExplosion {
+    @keyframes floralExplosion {
       0% {
         transform: scale(0) rotate(0deg);
         opacity: 1;
@@ -58,7 +65,7 @@
       }
     }
 
-    /* Emojis flotantes hot */
+    /* Corazones flotantes de fondo */
     .floating-hearts {
       position: fixed;
       top: 0;
@@ -71,18 +78,18 @@
 
     .heart {
       position: absolute;
-      color: rgba(255, 69, 0, 0.4);
+      color: rgba(255, 255, 255, 0.3);
       font-size: 20px;
       animation: float 8s infinite linear;
     }
 
     .heart:nth-child(odd) {
-      color: rgba(255, 140, 0, 0.5);
+      color: rgba(255, 182, 193, 0.4);
       font-size: 16px;
     }
 
     .heart:nth-child(3n) {
-      color: rgba(255, 69, 0, 0.6);
+      color: rgba(255, 255, 255, 0.5);
       font-size: 24px;
     }
 
@@ -128,56 +135,62 @@
       font-family: 'Dancing Script', cursive;
       font-size: 4rem;
       font-weight: 700;
-      color: #ff4500;
+      color: #fff;
       margin-bottom: 15px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-      animation: fireGlow 2s ease-in-out infinite alternate;
+      text-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      animation: pulse 2s ease-in-out infinite alternate;
+      letter-spacing: 2px;
     }
 
-    @keyframes fireGlow {
-      from { 
-        transform: scale(1);
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(255, 69, 0, 0.5);
-      }
-      to { 
-        transform: scale(1.05);
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 30px rgba(255, 69, 0, 0.8);
-      }
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
     }
 
-    .subtitle {
-      font-size: 1.3rem;
-      margin-bottom: 40px;
-      color: #ff8c00;
-      font-weight: 300;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-      opacity: 0.9;
-    }
+  .subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: #fff;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    opacity: 0.9;
+  }
 
     .main-countdown {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 30px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 35px;
       border-radius: 30px;
-      box-shadow: 0 20px 40px rgba(255, 69, 0, 0.3);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
       margin-bottom: 50px;
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(255, 69, 0, 0.4);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.4s ease;
+    }
+
+    .main-countdown:hover {
+      transform: scale(1.02) translateY(-5px);
+      box-shadow: 0 35px 70px -12px rgba(0,0,0,0.3);
+    }
+
+      .secondary-countdown:hover {
+      transform: scale(1.02) translateY(-5px);
+      box-shadow: 0 35px 70px -12px rgba(0,0,0,0.3);
     }
 
     .countdown-display {
       font-size: 2.8rem;
-      font-weight: 600;
-      color: #ff4500;
+      font-weight: 800;
+      color: #fff;
       margin-bottom: 15px;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+      text-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .countdown-label {
       font-size: 1rem;
-      color: #ff8c00;
+      color: rgba(255, 255, 255, 0.9);
       font-weight: 300;
+      letter-spacing: 0.5px;
     }
-
     /* Cuadrícula de días */
     .days-grid-container {
       margin: 50px 0;
@@ -186,23 +199,31 @@
     .days-grid-title {
       font-family: 'Dancing Script', cursive;
       font-size: 2.5rem;
-      color: #ff4500;
+      color: #fff;
       margin-bottom: 30px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
-    .days-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-      gap: 15px;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 30px;
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 25px;
-      box-shadow: 0 15px 35px rgba(255, 69, 0, 0.2);
-      border: 1px solid rgba(255, 69, 0, 0.3);
-    }
+  .days-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(8px, 2vw, 15px);
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 30px;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+  }
+
+  .days-grid:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 35px 70px -12px rgba(0,0,0,0.3);
+  }
 
     .day-box {
       width: 60px;
@@ -218,52 +239,54 @@
       cursor: pointer;
     }
 
-    .day-box.passed {
-      background: linear-gradient(135deg, #8b0000, #ff0000);
-      color: white;
-      transform: scale(0.9);
-    }
+  .day-box.passed {
+    background: linear-gradient(135deg, #ff7c7c 0%, #ff5858 100%);
+    color: transparent; /* CAMBIAR: era 'white', ahora 'transparent' */
+    transform: scale(0.9);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+  }
 
     .day-box.passed::after {
-      content: '🔥';
+      content: '✗';
       position: absolute;
       font-size: 1.8rem;
       color: white;
       font-weight: bold;
     }
 
+
     .day-box.current {
-      background: linear-gradient(135deg, #ff4500, #ff6500);
+      background: linear-gradient(135deg, #ffd93d, #ff9a56);
       color: white;
-      animation: hotGlow 1.5s ease-in-out infinite alternate;
+      animation: glow 1.5s ease-in-out infinite alternate;
       transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
+      box-shadow: 0 0 20px rgba(255, 217, 61, 0.6);
     }
 
     .day-box.future {
-      background: linear-gradient(135deg, #333, #555);
-      color: #ff8c00;
-      border: 2px solid rgba(255, 69, 0, 0.3);
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
+      color: #666;
+      border: 2px solid rgba(255, 255, 255, 0.3);
     }
 
     .day-box.future:hover {
       transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
-    @keyframes hotGlow {
-      from { box-shadow: 0 0 20px rgba(255, 69, 0, 0.8); }
-      to { box-shadow: 0 0 30px rgba(255, 69, 0, 1); }
+    @keyframes glow {
+      from { box-shadow: 0 0 20px rgba(255, 217, 61, 0.6); }
+      to { box-shadow: 0 0 30px rgba(255, 217, 61, 0.9); }
     }
 
-    /* Modal personalizado */
+    /* Modal personalizado para alertas bonitas */
     .custom-modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.7);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -279,16 +302,15 @@
     }
 
     .modal-content {
-      background: linear-gradient(135deg, #1a1a1a, #2d1b2e);
+      background: linear-gradient(135deg, #ff9a9e, #fecfef);
       padding: 30px;
       border-radius: 25px;
       text-align: center;
       max-width: 400px;
       width: 90%;
-      box-shadow: 0 20px 60px rgba(255, 69, 0, 0.5);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
       transform: scale(0.8);
       transition: transform 0.3s ease;
-      border: 2px solid rgba(255, 69, 0, 0.4);
     }
 
     .custom-modal.show .modal-content {
@@ -298,21 +320,21 @@
     .modal-title {
       font-family: 'Dancing Script', cursive;
       font-size: 2.5rem;
-      color: #ff4500;
+      color: #fff;
       margin-bottom: 15px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
     .modal-message {
-      color: #ff8c00;
+      color: #fff;
       font-size: 1.2rem;
       margin-bottom: 25px;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
 
     .modal-close {
-      background: linear-gradient(135deg, #ff4500, #ff6500);
-      color: #fff;
+      background: rgba(255, 255, 255, 0.9);
+      color: #e91e63;
       border: none;
       padding: 12px 25px;
       border-radius: 25px;
@@ -323,9 +345,9 @@
     }
 
     .modal-close:hover {
-      background: linear-gradient(135deg, #ff6500, #ff8500);
+      background: white;
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(255, 69, 0, 0.5);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
     /* Modal de imagen */
@@ -335,7 +357,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.95);
+      background: rgba(0, 0, 0, 0.9);
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -352,11 +374,11 @@
 
     .image-modal-content {
       position: relative;
-      max-width: 40%;
-      max-height: 40%;
+      max-width: 70%;
+      max-height: 70%;
       border-radius: 10px;
       overflow: visible;
-      box-shadow: 0 20px 60px rgba(255, 69, 0, 0.6);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
       transform: scale(0.8);
       transition: transform 0.3s ease;
     }
@@ -366,20 +388,19 @@
     }
 
     .image-modal img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      display: block;
-      border-radius: 20px;
-      border: 2px solid rgba(255, 69, 0, 0.4);
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 20px;
     }
 
     .image-close {
       position: absolute;
       top: 15px;
       right: 15px;
-      background: linear-gradient(135deg, #ff4500, #ff6500);
-      color: #fff;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
       border: none;
       width: 40px;
       height: 40px;
@@ -393,7 +414,7 @@
     }
 
     .image-close:hover {
-      background: linear-gradient(135deg, #ff6500, #ff8500);
+      background: white;
       transform: scale(1.1);
     }
 
@@ -408,7 +429,7 @@
 
     .sparkle {
       position: absolute;
-      color: #ff4500;
+      color: #ffd93d;
       font-size: 12px;
       animation: sparkle 1.5s ease-out infinite;
     }
@@ -428,29 +449,29 @@
       }
     }
 
-    /* Mensajes sensuales */
+    /* Mensajes románticos */
     .love-messages {
       margin: 50px 0;
     }
 
     .message-card {
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(255, 255, 255, 0.95);
       padding: 25px;
       border-radius: 20px;
       margin: 20px 0;
-      box-shadow: 0 10px 25px rgba(255, 69, 0, 0.3);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       font-style: italic;
-      color: #ff8c00;
+      color: #666;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      border-left: 4px solid #ff4500;
+      border-left: 4px solid #e91e63;
     }
 
     .message-card::before {
       content: '"';
       font-size: 3rem;
-      color: #ff4500;
+      color: #e91e63;
       position: relative;
       top: 10px;
       left: -5px;
@@ -459,7 +480,7 @@
     .message-card::after {
       content: '"';
       font-size: 3rem;
-      color: #ff4500;
+      color: #e91e63;
       position: relative;
       top: 10px;
       right: -5px;
@@ -467,7 +488,7 @@
 
     /* Botón especial */
     .special-button {
-      background: linear-gradient(135deg, #ff4500, #ff6500);
+      background: linear-gradient(135deg, #e91e63, #ad1457);
       color: white;
       border: none;
       padding: 15px 30px;
@@ -477,13 +498,12 @@
       cursor: pointer;
       transition: all 0.3s ease;
       margin: 30px 0;
-      box-shadow: 0 10px 25px rgba(255, 69, 0, 0.4);
+      box-shadow: 0 10px 25px rgba(233, 30, 99, 0.3);
     }
 
     .special-button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(255, 69, 0, 0.6);
-      background: linear-gradient(135deg, #ff6500, #ff8500);
+      box-shadow: 0 15px 35px rgba(233, 30, 99, 0.4);
     }
 
     /* Responsive */
@@ -561,18 +581,18 @@
       }
     }
 
-    /* Footer sensual */
+    /* Footer romántico */
     .footer {
       margin-top: 60px;
       margin-bottom: 20px;
-      color: #ff8c00;
+      color: #fff;
       font-size: 1.1rem;
       font-weight: 600;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
     }
 
     .footer .heart-emoji {
-      color: #ff4500;
+      color: #ff6b9d;
       font-size: 1.3rem;
       animation: heartbeat 1.5s ease-in-out infinite;
     }
@@ -588,7 +608,7 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: linear-gradient(135deg, #ff4500, #ff6500);
+      background: linear-gradient(135deg, #25d366, #128c7e);
       color: white;
       border: none;
       padding: 12px 20px;
@@ -597,7 +617,7 @@
       font-weight: 500;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(255, 69, 0, 0.5);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
       z-index: 1000;
       text-decoration: none;
       display: flex;
@@ -607,103 +627,107 @@
 
     .whatsapp-button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(255, 69, 0, 0.7);
-      background: linear-gradient(135deg, #ff6500, #ff8500);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+      background: linear-gradient(135deg, #128c7e, #075e54);
     }
 
-  .fog-layer {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: url('images/fog.png') no-repeat center center / cover;
-    opacity: 0.1;
-    pointer-events: none;
-    animation: fogPulse 10s infinite ease-in-out;
-    z-index: 3;
+    .sparkle {
+  position: absolute;
+  color: #FFD700;
+  font-size: 12px;
+  animation: sparkleAnimation 1.5s ease-out forwards;
+  pointer-events: none;
+}
+
+.secondary-countdown {
+  background: rgba(255, 255, 255, 0.10);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px -10px rgba(0,0,0,0.2);
+  margin: -40px auto 40px auto;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: 500px;
+}
+
+.countdown-display.small {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+
+@keyframes sparkleAnimation {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
   }
-  @keyframes fogPulse {
-    0%, 100% { opacity: 0.08; }
-    50% { opacity: 0.15; }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
   }
-  .explicit-lock {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 10001;
-    color: #fff;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: 'Poppins', sans-serif;
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
   }
-  .explicit-lock input {
-    padding: 10px;
-    font-size: 1.1rem;
-    border-radius: 8px;
-    border: none;
-    margin-top: 10px;
-    width: 200px;
+}
+
+    @keyframes glow {
+  from {
+    box-shadow: 0 0 25px rgba(255, 210, 63, 0.7), 0 0 40px rgba(255, 165, 0, 0.4);
   }
-  .explicit-lock button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: #ff4500;
-    border: none;
-    color: #fff;
-    border-radius: 8px;
-    cursor: pointer;
+  to {
+    box-shadow: 0 0 35px rgba(255, 210, 63, 1), 0 0 60px rgba(255, 165, 0, 0.8);
   }
-</style>
+}
+
+
   </style>
 </head>
 <body>
-    <div class="fog-layer"></div>
-  <div class="explicit-lock" id="explicitLock">
-    <div>🔐 Ingresa la clave caliente:</div>
-    <input type="password" id="explicitInput" placeholder="...">
-    <button onclick="unlockExplicit()">Entrar</button>
-  </div>
-
-  <!-- Animación de entrada de llamas -->
+  <!-- Animación de entrada floreal -->
   <div class="floral-explosion" id="floralExplosion"></div>
 
-  <!-- Emojis flotantes hot -->
+  <!-- Corazones flotantes -->
   <div class="floating-hearts" id="hearts"></div>
 
   <div class="container">
     <h1>Cuenta atrás</h1>
-    <p class="subtitle">para volver a sentir tu calor junto a mí</p>
+    <p class="subtitle">para volver a verte y abrazarte fuerte</p>
 
     <!-- Contador principal -->
     <div class="main-countdown">
       <div class="countdown-display" id="timer">Cargando...</div>
-      <div class="countdown-label">hasta volver a encender la pasión</div>
+      <div class="countdown-label">hasta volver a darte un besikiki</div>
     </div>
+
+    <div class="secondary-countdown">
+    <div class="countdown-display small" id="timer2">Cargando segundo contador...</div>
+    <div class="countdown-label">tq, L</div>
+  </div>
 
     <!-- Cuadrícula de días -->
     <div class="days-grid-container">
-      <h2 class="days-grid-title">Cada día que pasa aumenta las ganas</h2>
+      <h2 class="days-grid-title">Cada día que pasa es un día menos</h2>
       <div class="days-grid" id="daysGrid"></div>
     </div>
 
-    <!-- Mensajes sensuales -->
+    <!-- Mensajes románticos -->
     <div class="love-messages">
       <div class="message-card" id="dailyMessage">
-        El fuego sigue ardiendo... 🔥
+        L 💕
       </div>
     </div>
 
     <!-- Botón especial -->
     <button class="special-button" onclick="showLoveMessage()">
-      🔥 Pulsa para encender la llama 🔥
+      💕 Pulsa para recibir un mensaje 💕
     </button>
 
     <div class="footer">
-      <p>El deseo crece con cada segundo que pasa <span class="heart-emoji">🔥</span></p>
-      <p style="margin-top: 10px; font-size: 0.9rem; font-weight: 600; color: #ff8c00; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
-        Ardiendo por ti desde Italia 🇮🇹
+      <p>Sigue brillando hasta que llegue. Te pienso cada minuto <span class="heart-emoji">💖</span></p>
+      <p style="margin-top: 10px; font-size: 0.9rem; font-weight: 600; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+        Con todo mi amor, desde Italia 🇮🇹
       </p>
     </div>
   </div>
@@ -712,53 +736,72 @@
   <div class="custom-modal" id="customModal">
     <div class="modal-content">
       <div class="modal-title" id="modalTitle">¡Ey!</div>
-      <div class="modal-message" id="modalMessage">Sé que tienes ganas pero con calma bellaka 🔥</div>
-      <button class="modal-close" onclick="closeModal()">Me gusta😏</button>
+      <div class="modal-message" id="modalMessage">Todavía no puedes abrirlo impacientona 💕</div>
+      <button class="modal-close" onclick="closeModal()">Vale, vale 😊</button>
     </div>
   </div>
 
   <!-- Modal de imagen -->
   <div class="image-modal" id="imageModal">
     <div class="image-modal-content">
-      <img id="modalImage" src="" alt="Momento ardiente">
+      <img id="modalImage" src="" alt="Foto del día">
       <button class="image-close" onclick="closeImageModal()">×</button>
     </div>
   </div>
 
   <!-- Botón de WhatsApp -->
-  <a href="https://wa.me/+34638707783?text=Te%20quiero%20dentro%20de%20mi" class="whatsapp-button" target="_blank">
-    Te tengo ardiendo? Pulsa 🔥
+  <a href="https://wa.me/+34638707783?text=Hola%20guapo%20hablas%20?" class="whatsapp-button" target="_blank">
+    Me echas de menos? Pulsa 💕
   </a>
 
   <script>
+
+    const targetDate2 = new Date('2025-06-06T17:30:00'); // fecha para el segundo evento
+
+    function updateCountdown2() {
+      const now = new Date();
+      const diff = targetDate2 - now;
+
+      const element = document.getElementById('timer2');
+
+      if (diff <= 0) {
+        element.innerHTML = 'Cada día estamos más cerca pero la espera se me hace más larga 💕';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      element.innerHTML = 
+        `<strong>${days}</strong> días <strong>${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}</strong>`;
+    }
+
     const targetDate = new Date('2025-06-17T22:10:00');
     const startDate = new Date('2025-05-29T20:00:00');
     
-  const loveMessages = [
-    "me tienes loco con esa sonrisa 🔥",
-    "no puedo parar de pensar en ti 🍑",
-    "cada noche sueño contigo 💧",
-    "eres puro fuego, baby 🔥",
-    "me voy a tatuar una L 🍆",
-    "no sabes las ganas que tengo de verte 💧",
-    "eres mi debilidad más dulce 🍑",
-    "el 17 va a ser... intenso 🔥",
-    "estoy imaginando tus manos… y no precisamente sobre el teclado 😈",
-    "la próxima vez no me vas a dejar dormir 😵‍💫",
-    "prepárate para sudar, y no por el calor de junio... 🔥",
-    "cuando estemos solos, sin ropa, sin pausa, sin hora pero con reloj 💦"
-  ];
+    const loveMessages = [
+      "italia 2026 is gonna go craaaazy :)",
+      "bella kiii taaaa 💕",
+      "ahí estas derrapando eh peque",
+      "y debería ser un de liii tooo, yo dejarte de mirar 🌹",
+      "tq",
+      "te echo de menos 🏠💕",
+      "el 17 empieza el verdadero ferikiki",
+      "sí, estoy mirando la nota de la agenda ahora mismo"
+    ];
 
-    // Animación de llamas de entrada
+    // Animación floreal de entrada
     function createFloralExplosion() {
       const container = document.getElementById('floralExplosion');
-      const flames = ['🔥', '🔥', '🍆', '🍑', '💧', '💧', '🍑', '🍆'];
+      const flowers = ['🌸', '🌺', '🌷', '🌹', '💐', '🌻', '🌼', '🌟', '✨', '💫'];
       
       for (let i = 0; i < 20; i++) {
         setTimeout(() => {
           const flower = document.createElement('div');
           flower.className = 'flower';
-          flower.innerHTML = flames[Math.floor(Math.random() * flames.length)];
+          flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
           flower.style.left = Math.random() * 100 + '%';
           flower.style.top = Math.random() * 100 + '%';
           flower.style.animationDelay = Math.random() * 0.5 + 's';
@@ -782,9 +825,9 @@
         const heart = document.createElement('div');
         heart.className = 'heart';
         
-        // Emojis hot
-        const hotEmojis = ['🔥', '🍆', '🍑', '💧', '💥', '✨'];
-        heart.innerHTML = hotEmojis[Math.floor(Math.random() * hotEmojis.length)];
+        // Variedad de corazones
+        const heartTypes = ['♥', '💕', '💖', '💗', '🤍', '💙', '💜'];
+        heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
         
         heart.style.left = Math.random() * 100 + '%';
         heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
@@ -801,7 +844,7 @@
       const diff = targetDate - now;
 
       if (diff <= 0) {
-        document.getElementById('timer').innerHTML = '¡Ya estoy aquí para ti! 🔥';
+        document.getElementById('timer').innerHTML = '¡Ya estoy contigo! 💕';
         return;
       }
 
@@ -822,7 +865,7 @@
       setInterval(() => {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
-        sparkle.innerHTML = '🔥';
+        sparkle.innerHTML = '✨';
         
         const angle = Math.random() * 360;
         const distance = 30 + Math.random() * 20;
@@ -831,14 +874,13 @@
         
         sparkle.style.left = x + 'px';
         sparkle.style.top = y + 'px';
-        sparkle.style.animationDelay = Math.random() * 0.5 + 's';
         
         sparkleContainer.appendChild(sparkle);
         
         setTimeout(() => {
           sparkle.remove();
         }, 1500);
-      }, 200);
+      }, 300); // CAMBIAR: era 200ms, ahora 300ms para mejor rendimiento
     }
 
     function createDaysGrid() {
@@ -877,7 +919,7 @@
       const img = document.getElementById('modalImage');
       img.src = `images/im${day}.jpg`;
       img.onerror = () => {
-        img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMzMzIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2ZmNDUwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk1vbWVudG8gZGVsIGTDrWEgJyArIGRheSArICc8L3RleHQ+PC9zdmc+';
+        img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmY5YTllIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZvdG8gZGVsIGTDrWEgJyArIGRheSArICc8L3RleHQ+PC9zdmc+';
       };
       modal.classList.add('show');
       document.body.style.overflow = 'hidden';
@@ -895,7 +937,7 @@
       
       for (let i = 0; i < 12; i++) {
         const heart = document.createElement('div');
-        heart.innerHTML = '🍑';
+        heart.innerHTML = '💖';
         heart.style.position = 'fixed';
         heart.style.left = centerX + 'px';
         heart.style.top = centerY + 'px';
@@ -938,7 +980,7 @@
       const message = document.getElementById('modalMessage');
       
       title.textContent = '¡Ey! 💕';
-      message.textContent = 'Sé que tienes ganas pero con calma bellaka 🔥';
+      message.textContent = 'Todavía no puedes abrirlo impacientona';
       modal.classList.add('show');
       document.body.style.overflow = 'hidden';
     }
@@ -952,14 +994,13 @@
     function showLoveMessage() {
       const messageElement = document.getElementById('dailyMessage');
       const randomMessage = loveMessages[Math.floor(Math.random() * loveMessages.length)];
-      document.getElementById("hotSound").play();
+      
       messageElement.style.opacity = '0';
       setTimeout(() => {
         messageElement.textContent = randomMessage;
         messageElement.style.opacity = '1';
       }, 300);
-    };
-  
+    }
 
     function updateDailyMessage() {
       const now = new Date();
@@ -970,16 +1011,48 @@
 
     // Mensaje inicial
     function showInitialMessage() {
-      setTimeout(() => {
+      const messages = [
+        { title: 'PRECIOSAAAA 💕', message: 'Hola niña más guapa del mundo' },
+        { title: 'Hoy es un día especial', message: 'Creo que ya sabrás que pasa hoy...' },
+        { title: 'Sí, es 14 de junio', message: 'y aunque siento que lo pasemos a distancia...' },
+        { title: 'Quería decirte... ', message: 'Que te quiero, muchísimas gracias por estos 4 meses preciosos 🤍' },
+        { title: 'Aunque 💖', message: 'Realmente te quiero dar las gracias por los 4 años de tu presencia en mi vida, no solo estos últimos meses' },
+        { title: 'Te quiero infinito, tuyo 💕', message: 'A' }
+      ];
+      
+      let currentMessage = 0;
+      
+      function showNextMessage() {
+        if (currentMessage < messages.length) {
+          const modal = document.getElementById('customModal');
+          const title = document.getElementById('modalTitle');
+          const message = document.getElementById('modalMessage');
+          
+          title.textContent = messages[currentMessage].title;
+          message.textContent = messages[currentMessage].message;
+          modal.classList.add('show');
+          document.body.style.overflow = 'hidden';
+          currentMessage++;
+        }
+      }
+      
+      // Mostrar primer mensaje después de 3 segundos
+      setTimeout(showNextMessage, 3000);
+      
+      // Interceptar el botón de cerrar para mostrar siguiente mensaje
+      const originalCloseModal = window.closeModal;
+      window.closeModal = function() {
         const modal = document.getElementById('customModal');
-        const title = document.getElementById('modalTitle');
-        const message = document.getElementById('modalMessage');
+        modal.classList.remove('show');
+        document.body.style.overflow = 'auto';
         
-        title.textContent = 'Hola, "princesita" 🔥';
-        message.textContent = 'Hoy notarás la web un poco más ... caliente';
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-      }, 3000);
+        if (currentMessage < messages.length) {
+          setTimeout(showNextMessage, 800);
+        } else {
+          // Restaurar función original después del último mensaje
+          window.closeModal = originalCloseModal;
+        }
+      };
     }
 
     // Cerrar modales con ESC
@@ -1010,35 +1083,13 @@
     createDaysGrid();
     updateDailyMessage();
     updateCountdown();
+    updateCountdown2();
     showInitialMessage();
     setInterval(updateCountdown, 1000);
-    
-    // Actualizar la cuadrícula cada hora
-    setInterval(createDaysGrid, 3600000);
+    setInterval(updateCountdown2, 1000);
 
-
-    const explicitPassword = "talmh1000"; // cambiar si lo deseas
-    const unlockedExplicit = localStorage.getItem("unlockedExplicit");
-    if (!unlockedExplicit) {
-      document.getElementById('explicitLock').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function unlockExplicit() {
-      const val = document.getElementById("explicitInput").value;
-      if (val.toLowerCase() === explicitPassword) {
-        localStorage.setItem("unlockedExplicit", true);
-        document.getElementById('explicitLock').style.display = 'none';
-        document.body.style.overflow = 'auto';
-      } else {
-        alert("Clave incorrecta 😈");
-      }
-    }
-
-    document.querySelector('.heart-emoji').addEventListener('dblclick', () => {
-    alert("Modo travieso activado... 🔓 ¿Estás lista?");
-    });
-
+    // Actualizar la cuadrícula cada media hora
+    setInterval(createDaysGrid, 1800000);
   </script>
 </body>
 </html>
